@@ -1,15 +1,15 @@
 def BubbleSort(lista):
     mudou = True
-    n = len(lista)
-    guarda = None
+    n = len(lista) - 1 
     while mudou:
-        j = 1
         mudou = False
+        guarda = 0      
+        j = 0
         while j < n:
-            if lista[j] > lista[j+1]:
-                lista[j], lista[j+1] = lista[j+1], lista[j]
+            if lista[j] > lista[j + 1]:
+                lista[j], lista[j + 1] = lista[j + 1], lista[j]
                 mudou = True
                 guarda = j
-                j =j + 1
-        n = guarda
-    
+            j += 1
+        n = guarda   
+    return lista
