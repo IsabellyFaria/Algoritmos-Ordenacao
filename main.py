@@ -1,5 +1,7 @@
 import QuickSort
 import BubbleSort
+import SelectionSort
+import MergeSort
 app = True
 while app:
     lista_usuario = [64, 34, 25, 12, 22, 11, 90, 5]
@@ -11,4 +13,8 @@ while app:
             QuickSort.QuickSort(lista_usuario)
         case 2:
             BubbleSort.BubbleSort(lista_usuario)
+        case 3:
+            SelectionSort.SelectionSort(lista_usuario)
+        case 4:   
+            lista_usuario = MergeSort.MergeSort(lista_usuario)
     print(lista_usuario)
