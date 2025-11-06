@@ -1,0 +1,14 @@
+
+Para o seu Merge Sort: ver se você consegue torná-lo “in-place” ou reduzir o uso de listas auxiliares (isso muitas vezes requer estrutura adicional ou técnica de fusão mais sofisticada).
+
+Para o seu Quick Sort: considerar escolher pivô de forma aleatória ou “mediana de três” para reduzir chance de pior-caso, ou trocar para outro algoritmo quando o tamanho da sub-lista ficar pequeno.
+
+Para Bubble e Selection: entender que são conceitos simples, mas raramente eficientes para grandes listas; estudar variantes como “cocktail sort” (para bubble) ou otimizações de leitura/escrita.
+
+Avaliar casos de dados quase ordenados: alguns algoritmos básicos perdem desempenho ou ficam sub-ótimos se o dado já tiver uma ordem parcial.
+
+Se for aplicar em produção ou com listas grandes, considerar usar um algoritmo “ótimo” (O(n log n)) como Merge ou Quick, ou ainda híbrido mais moderno.
+
+https://arxiv.org/pdf/2509.01758
+https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/pdfs/quicksort.pdf?utm_source=chatgpt.com
+https://publications.waset.org/10000123/enhanced-bidirectional-selection-sort?utm_source=chatgpt.com
