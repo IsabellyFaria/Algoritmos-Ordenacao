@@ -1,53 +1,39 @@
-def QuickSort(lista):
-    n = len(lista)
-    
-    # pilha de limites (equivalente ao pivs[] no Dafny)
-    pivs = [0] * (n + 1)
-    pivs[n] = n
-    
-    from_i = 0
-    to_i = n
-    top = n
+def partition(arr, low, high):
+    # vamos usar o último elemento como pivô
+    pivot = arr[high]
+    i = low - 1  # índice do "miolo" dos menores que o pivô
 
-    while n - from_i > 1:
-
-        # caso quando o intervalo é pequeno (<=1)
-        if (to_i - from_i) <= 1:
-            # nada a ordenar
-            from_i = to_i + 1
-            top += 1
-            to_i = pivs[top]
-        
-        else:
-            # pivot = primeiro elemento do segmento
-            pivot = lista[from_i]
-
-            # particionamento equivalente a partition(a, from+1, to)
-            mid = partition(lista, from_i + 1, to_i, pivot)
-
-            # coloca o pivot no lugar correto
-            lista[from_i], lista[mid - 1] = lista[mid - 1], lista[from_i]
-
-            # atualiza pilha como o código Dafny faz
-            top -= 1
-            pivs[top] = mid - 1
-            to_i = mid - 1
-
-
-def partition(lista, inicio, fim, pivot):
-    """
-    Particionamento no mesmo estilo que o Dafny usa:
-    elementos < pivot ficam à esquerda
-    """
-    i = inicio
-    j = fim - 1
-
-    while i <= j:
-        while i < fim and lista[i] <= pivot:
+    for j in range(low, high):
+        if arr[j] <= pivot:
             i += 1
-        while j >= inicio and lista[j] > pivot:
-            j -= 1
-        if i < j:
-            lista[i], lista[j] = lista[j], lista[i]
+            arr[i], arr[j] = arr[j], arr[i]
 
-    return i
+    # coloca o pivô na posição correta
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    return i + 1
+
+
+def QuickSort(arr):
+    n = len(arr)
+    # pilha de intervalos (low, high)
+    stack = [(0, n - 1)]
+
+    while stack:
+        low, high = stack.pop()
+        if low < high:
+            p = partition(arr, low, high)
+
+            # empilha as duas metades que ainda precisam ordenar
+            # empilha primeiro a maior para reduzir altura da pilha
+            if p - 1 - low > high - (p + 1):
+                stack.append((low, p - 1))
+                stack.append((p + 1, high))
+            else:
+                stack.append((p + 1, high))
+                stack.append((low, p - 1))
+
+
+# exemplo de uso
+lista = [5, 3, 8, 4, 2, 7, 1, 10]
+quicksort_iterativo(lista)
+print(lista)
