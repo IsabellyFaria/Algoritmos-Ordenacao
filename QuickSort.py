@@ -33,7 +33,3 @@ def QuickSort(arr):
                 stack.append((low, p - 1))
 
 
-# exemplo de uso
-lista = [5, 3, 8, 4, 2, 7, 1, 10]
-quicksort_iterativo(lista)
-print(lista)
