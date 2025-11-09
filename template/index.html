@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Ordenação de dados </title>
+
+
+</head>
+
+<body>
+    <div class="flex items-center justify-center p-12">
+        <!-- Author: FormBold Team -->
+        <!-- Learn More: https://formbold.com -->
+        <div class="mx-auto w-full max-w-[550px] bg-white">
+            <form class="py-6 px-9" action="/receber" method="POST"  id="formulario" enctype="multipart/form-data">
+
+
+                <label for="ordenacoes" class="block mb-2 text-sm font-medium text-gray-900">Escolha uma opção:</label>
+                <select id="ordenacoes" name="ordenacao"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected>Algoritmo de Ordenação</option>
+                    <option value="B">Bubble Sort</option>
+                    <option value="S">Selection Sort</option>
+                    <option value="M">Merge Sort</option>
+                    <option value="Q">Quick Sort (recomendado) </option>
+                </select>
+
+
+                <div class="mb-6 pt-4">
+                    <label class="mb-5 block text-xl font-semibold text-[#07074D]">
+                        Upload de Arquivo
+                    </label>
+
+                    <div class="mb-8">
+                        <input type="file" name="arquivo" accept="csv" id="file" class="sr-only" />
+                        <label for="file"
+                            class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
+                            <div>
+                                <span class="mb-2 block text-xl font-semibold text-[#07074D]">
+                                    Arraste o arquivo
+                                </span>
+                                <span class="mb-2 block text-base font-medium text-[#6B7280]">
+                                    Ou
+                                </span>
+                                <span
+                                    class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]">
+                                    Pesquise
+                                </span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="mb-5 rounded-md bg-[#F5F7FB] py-4 px-8" id="arquivo-enviado">
+                        <div class="flex items-center justify-between">
+                            <span class="truncate pr-3 text-base font-medium text-[#07074D]">
+                            </span>
+                            <button class="text-[#07074D]">
+                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M0.279337 0.279338C0.651787 -0.0931121 1.25565 -0.0931121 1.6281 0.279338L9.72066 8.3719C10.0931 8.74435 10.0931 9.34821 9.72066 9.72066C9.34821 10.0931 8.74435 10.0931 8.3719 9.72066L0.279337 1.6281C-0.0931125 1.25565 -0.0931125 0.651788 0.279337 0.279338Z"
+                                        fill="currentColor" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M0.279337 9.72066C-0.0931125 9.34821 -0.0931125 8.74435 0.279337 8.3719L8.3719 0.279338C8.74435 -0.0931127 9.34821 -0.0931123 9.72066 0.279338C10.0931 0.651787 10.0931 1.25565 9.72066 1.6281L1.6281 9.72066C1.25565 10.0931 0.651787 10.0931 0.279337 9.72066Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label for="small-input"
+                                class="block mb-2 text-sm font-medium text-gray-900 ">Escolha uma coluna para a ordenação:</label>
+                            <input type="number" name="indice" id="indice-input"
+                                placeholder="Digite a coluna desejada" class="block w-full p-3 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        </div>
+                        <button type="submit"
+                            class="hover:cursor-pointer transition delay-150 duration-300 ease-in-out hover:bg-[#84374f] hover:shadow-2xs w-full rounded-md bg-[#d84d78] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                            Ordenar Arquivo
+                        </button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="{{ url_for('static', filename='scripts/script.js') }}"></script>

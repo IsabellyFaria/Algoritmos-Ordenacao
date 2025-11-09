@@ -1,0 +1,14 @@
+Criar Ambiente Virtual:
+py -m venv venv
+
+Ativar Ambiente Virtual:
+.\venv\Scripts\activate
+
+Desativar Ambiente Virtual:
+deactivate
+
+Instalar as Dependencias:
+pip install -r requiriments.txt
+
+Rodar o Projeto:
+py run.py
