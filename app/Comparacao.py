@@ -28,12 +28,12 @@ def verifica_ordenacao(lista_teste, lista, key_index):
     elif len(lista_teste) < len(lista):
         return f"LISTA COM {len(lista) - len(lista_teste)} ELEMENTOS FALTANDO"
     else:
-        erros = sum(1 for i in range(len(lista_correta)) if lista_teste[i] != lista_correta[i])
+        erros = sum(1 for i in range(len(lista_correta)) if lista_teste[i][key_index] != lista_correta[i][key_index])
         return f"LISTA COM {erros} ELEMENTOS FORA DE ORDEM"
 
 # --- Leitura da lista ---
 lista = []
-with open('produtos_5000.csv', 'r', encoding='utf-8') as file:
+with open('./uploads/produtos_5000.csv', 'r', encoding='utf-8') as file:
     reader = csv.reader(file, delimiter=';')
     cabecalho = next(reader)
     for linha in reader:

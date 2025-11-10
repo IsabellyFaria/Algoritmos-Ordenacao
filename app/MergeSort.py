@@ -1,40 +1,33 @@
 def MergeSort(lista, key_index=0):
-    tamanho = len(lista)
-    sub_tamanho = 1  # tamanho inicial das sublistas a serem mescladas
+    n = len(lista)
+    size = 1
 
-    while sub_tamanho < tamanho:
-        for inicio in range(0, tamanho, 2 * sub_tamanho):
-            meio = min(inicio + sub_tamanho, tamanho)
-            fim = min(inicio + 2 * sub_tamanho, tamanho)
-            mesclar_sublistas(lista, inicio, meio, fim, key_index)
-        sub_tamanho *= 2
+    while size < n:
+        for start in range(0, n, 2 * size):
+            mid = min(start + size, n)
+            end = min(start + 2 * size, n)
+            merge_inplace(lista, start, mid, end, key_index)
+        size *= 2
+def get_key(elem, key_index):
+    return elem[key_index] if isinstance(elem, list) else elem
 
+def merge_inplace(lista, start, mid, end, key_index):
+    i = start
+    j = mid
 
-def mesclar_sublistas(lista, inicio, meio, fim, key_index):
-    sublista_esquerda = lista[inicio:meio]
-    sublista_direita = lista[meio:fim]
-
-    indice_esquerda = indice_direita = 0
-    indice_lista = inicio
-
-    while indice_esquerda < len(sublista_esquerda) and indice_direita < len(sublista_direita):
-        elem_esq = sublista_esquerda[indice_esquerda][key_index] if isinstance(sublista_esquerda[indice_esquerda], list) else sublista_esquerda[indice_esquerda]
-        elem_dir = sublista_direita[indice_direita][key_index] if isinstance(sublista_direita[indice_direita], list) else sublista_direita[indice_direita]
-
-        if elem_esq <= elem_dir:
-            lista[indice_lista] = sublista_esquerda[indice_esquerda]
-            indice_esquerda += 1
+    while i < j and j < end:
+        if get_key(lista[i], key_index) <= get_key(lista[j], key_index):
+            i += 1
         else:
-            lista[indice_lista] = sublista_direita[indice_direita]
-            indice_direita += 1
-        indice_lista += 1
+            temp = lista[j]
+            k = j
 
-    while indice_esquerda < len(sublista_esquerda):
-        lista[indice_lista] = sublista_esquerda[indice_esquerda]
-        indice_esquerda += 1
-        indice_lista += 1
+            while k > i:
+                lista[k] = lista[k - 1]
+                k -= 1
 
-    while indice_direita < len(sublista_direita):
-        lista[indice_lista] = sublista_direita[indice_direita]
-        indice_direita += 1
-        indice_lista += 1
+            lista[i] = temp
+
+            i += 1
+            j += 1
+            mid += 1   
