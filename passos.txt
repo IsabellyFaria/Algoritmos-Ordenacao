@@ -1,3 +1,0 @@
-1. Trocar o nome do arquivo para um id aleatório.
-
-2. 
